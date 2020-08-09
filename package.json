@@ -1,0 +1,28 @@
+{
+  "name": "inaccessible.css",
+  "version": "1.0.0",
+  "description": "A stylesheet to highlight inaccessible markup",
+  "main": "inaccessible.css",
+  "scripts": {
+    "start": "npx sass src/scss/inaccessible.scss dist/css/inaccessible.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielmatthew/inaccessible.css.git"
+  },
+  "keywords": [
+    "accessibility",
+    "css",
+    "utility"
+  ],
+  "author": "github@danmatthew.co.uk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielmatthew/inaccessible.css/issues"
+  },
+  "homepage": "https://github.com/danielmatthew/inaccessible.css#readme",
+  "devDependencies": {
+    "sass": "^1.26.10"
+  }
+}
