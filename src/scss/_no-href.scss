@@ -1,0 +1,3 @@
+a:not([href]) {
+  @include accessible
+}
