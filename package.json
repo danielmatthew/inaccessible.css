@@ -4,6 +4,7 @@
   "description": "A stylesheet to highlight inaccessible markup",
   "main": "inaccessible.css",
   "scripts": {
+    "build": "npx sass src/scss/inaccessible.scss dist/css/inaccessible.css --style compressed",
     "start": "npx sass src/scss/inaccessible.scss dist/css/inaccessible.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +24,10 @@
   },
   "homepage": "https://github.com/danielmatthew/inaccessible.css#readme",
   "devDependencies": {
-    "sass": "^1.26.10"
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "husky": "^4.2.5",
+    "sass": "^1.26.10",
+    "standard-version": "^8.0.2"
   }
 }
