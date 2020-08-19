@@ -1,0 +1,35 @@
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>inaccessible.css demo</title>
+  <link rel="stylesheet" href="../dist/css/inaccessible.css">
+</head>
+<body>
+  <h1>inaccessible.css </h1>
+  <h2>Violations</h2>
+  <h3>No title</h3>
+  <h3>No <code>lang</code> attribute</h3>
+
+  <iframe src="no-lang.html">
+
+  </iframe>
+
+  <h3>Missing <code>alt</code> text</h3>
+
+  <img src="https://placehold.it/300"/>
+
+  <img src="https://placehold.it/300" alt=""/>
+
+  <h3>No <code>for</code> attribute</h3>
+
+  <form>
+    <label>A text input</label>
+    <input id="no-label" type="text">
+
+    <label for="with-label">A text input</label>
+    <input id="with-label" type="text">
+
+  </form>
+</body>
+</html>
