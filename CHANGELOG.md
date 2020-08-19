@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/danielmatthew/inaccessible.css/compare/v1.1.0...v1.2.0) (2020-08-19)
+
+
+### Features
+
+* highlight iframes without title ([faaef21](https://github.com/danielmatthew/inaccessible.css/commit/faaef21518dbdeb07ed8c32fd394922218722098))
+
+
+### Bug Fixes
+
+* use correct mixin name ([c094920](https://github.com/danielmatthew/inaccessible.css/commit/c0949209cc2162511f2a518fcbb1340ccb15ecc7))
+
 ## [1.1.0](https://github.com/danielmatthew/inaccessible.css/compare/v1.0.0...v1.1.0) (2020-08-12)
 
 
