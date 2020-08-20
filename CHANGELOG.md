@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/danielmatthew/inaccessible.css/compare/v1.2.0...v1.3.0) (2020-08-20)
+
+
+### Features
+
+* outline missing table headers ([fa99241](https://github.com/danielmatthew/inaccessible.css/commit/fa99241b965cc8c439f6447c09ad2eae03987953))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
