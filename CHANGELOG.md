@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/danielmatthew/inaccessible.css/compare/v1.3.0...v1.3.1) (2020-08-22)
+
+
+### Bug Fixes
+
+* include table partial ([1d8059e](https://github.com/danielmatthew/inaccessible.css/commit/1d8059e93a81048d1fe659241d4fd331a52feea4))
+
 # [1.3.0](https://github.com/danielmatthew/inaccessible.css/compare/v1.2.0...v1.3.0) (2020-08-20)
 
 
