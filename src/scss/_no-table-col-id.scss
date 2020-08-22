@@ -1,0 +1,6 @@
+table:not([role="presentation"]) {
+  th:not([id]),
+  td:not([headers]) {
+    @include inaccessible;
+  }
+}
