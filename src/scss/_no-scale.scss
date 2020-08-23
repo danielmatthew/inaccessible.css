@@ -1,0 +1,9 @@
+head {
+  display: block;
+}
+
+meta[content*="user-scalable=no"] {
+  display: block;
+  height: 1em;
+  @include inaccessible;
+}
