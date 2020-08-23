@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/danielmatthew/inaccessible.css/compare/v1.3.1...v1.3.2) (2020-08-23)
+
+
+### Bug Fixes
+
+* check title el for missing title ([bf62909](https://github.com/danielmatthew/inaccessible.css/commit/bf62909d53d23ce7395f3b72e16c37f5f4c1d31f))
+
 ## [1.3.1](https://github.com/danielmatthew/inaccessible.css/compare/v1.3.0...v1.3.1) (2020-08-22)
 
 
