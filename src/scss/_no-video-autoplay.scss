@@ -1,0 +1,4 @@
+video[autoplay],
+video[autoplay="false"] {
+  @include inaccessible
+}

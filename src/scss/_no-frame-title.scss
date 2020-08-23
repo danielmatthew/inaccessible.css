@@ -1,0 +1,4 @@
+iframe:not([title]),
+frame:not([title]) {
+  @include inaccessible
+}
