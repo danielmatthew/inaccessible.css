@@ -1,6 +1,6 @@
 {
   "name": "inaccessible.css",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "A stylesheet to highlight inaccessible markup",
   "main": "inaccessible.css",
   "scripts": {
