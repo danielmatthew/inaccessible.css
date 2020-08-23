@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/danielmatthew/inaccessible.css/compare/v1.3.2...v1.4.0) (2020-08-23)
+
+
+### Features
+
+* no user-scalable=no ([daeab91](https://github.com/danielmatthew/inaccessible.css/commit/daeab9173226851dc566f854b8742e4f34aaa0b7))
+
 ## [1.3.2](https://github.com/danielmatthew/inaccessible.css/compare/v1.3.1...v1.3.2) (2020-08-23)
 
 
