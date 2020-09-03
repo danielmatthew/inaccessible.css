@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/danielmatthew/inaccessible.css/compare/v1.4.0...v1.4.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* cover empty lang attribute ([a854126](https://github.com/danielmatthew/inaccessible.css/commit/a854126e5c7f0d477555f1ccf1dd583e23b1d782))
+
 # [1.4.0](https://github.com/danielmatthew/inaccessible.css/compare/v1.3.2...v1.4.0) (2020-08-23)
 
 
