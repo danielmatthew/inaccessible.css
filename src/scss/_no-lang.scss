@@ -1,4 +1,6 @@
 :root:not([lang]),
-html:not([lang]) {
+html:not([lang]),
+html[lang=" "],
+html[lang=""] {
   @include inaccessible
 }
