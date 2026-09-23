@@ -1,0 +1,13 @@
+@use "highlight" as *;
+
+// WCAG 4.1.2 Name, Role, Value. Focusable content inside aria-hidden is
+// announced as nothing when it receives focus.
+$focusable: "a[href], area[href], button, input:not([type='hidden' i]), select, textarea, iframe, summary, [contenteditable]:not([contenteditable='false' i]), [tabindex]";
+$unfocusable: ":disabled, [tabindex^='-'], [inert], [inert] *";
+
+[aria-hidden="true" i]:not([inert], [inert] *) {
+  &:is(#{$focusable}):not(#{$unfocusable}),
+  &:has(:is(#{$focusable}):not(#{$unfocusable})) {
+    @include inaccessible;
+  }
+}

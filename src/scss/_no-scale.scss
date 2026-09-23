@@ -1,9 +1,15 @@
-head {
-  display: block;
-}
+@use "highlight" as *;
+@use "head";
 
-meta[content*="user-scalable=no"] {
-  display: block;
-  height: 1em;
-  @include inaccessible;
+// WCAG 1.4.4 Resize Text
+meta[name="viewport" i]:is(
+  [content*="user-scalable=no" i],
+  [content*="user-scalable=0" i],
+  [content*="maximum-scale=1," i],
+  [content$="maximum-scale=1" i],
+  [content*="maximum-scale=1.0," i],
+  [content$="maximum-scale=1.0" i],
+  [content*="maximum-scale=0" i]
+) {
+  @include inaccessible-meta;
 }

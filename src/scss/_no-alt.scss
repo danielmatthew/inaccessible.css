@@ -1,3 +1,8 @@
-img:not([alt]) {
-  @include inaccessible
+@use "highlight" as *;
+
+// WCAG 1.1.1 Non-text Content. alt="" is valid for decorative images.
+img:not([alt]),
+input[type="image" i]:not([alt], [aria-label], [aria-labelledby]),
+[role="img" i]:not(img, [aria-label], [aria-labelledby], :has(> title)) {
+  @include inaccessible;
 }

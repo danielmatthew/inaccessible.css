@@ -1,0 +1,6 @@
+@use "highlight" as *;
+
+// WCAG 2.4.3 Focus Order
+[tabindex]:not([tabindex="0"], [tabindex^="-"], [tabindex=""]) {
+  @include inaccessible;
+}

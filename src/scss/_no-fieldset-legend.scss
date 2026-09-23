@@ -1,0 +1,6 @@
+@use "highlight" as *;
+
+// WCAG 1.3.1 Info and Relationships
+fieldset:not(:has(> legend)) {
+  @include inaccessible(warning, "Fieldset has no legend");
+}

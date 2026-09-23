@@ -1,11 +1,34 @@
-@import
-  'highlight',
-  'no-lang',
-  'no-for',
-  'no-alt',
-  'no-href',
-  'no-frame-title',
-  'no-table-col-id',
-  'no-video-autoplay',
-  'no-scale'
-;
+// inaccessible.css: highlight inaccessible markup.
+// Errors are outlined in red, likely problems (warnings) in orange.
+@forward "highlight";
+
+// Document
+@use "no-lang";
+@use "no-title";
+@use "no-scale";
+@use "meta-refresh";
+
+// Images and media
+@use "no-alt";
+@use "no-frame-title";
+@use "no-video-captions";
+@use "no-video-autoplay";
+@use "moving-content";
+
+// Forms
+@use "no-for";
+@use "no-label";
+@use "no-fieldset-legend";
+
+// Links, buttons and headings
+@use "no-href";
+@use "empty-content";
+
+// Structure
+@use "table-headers";
+@use "list-children";
+
+// Focus and ARIA
+@use "positive-tabindex";
+@use "aria-hidden-focusable";
+@use "discouraged";

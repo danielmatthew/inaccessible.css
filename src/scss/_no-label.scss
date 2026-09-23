@@ -1,0 +1,12 @@
+@use "highlight" as *;
+
+// WCAG 4.1.2 Name, Role, Value. CSS can't check that a matching
+// <label for> exists, so controls with an id are given the benefit of the
+// doubt. A placeholder is not a label.
+:is(
+  input:not([type="hidden" i], [type="submit" i], [type="reset" i], [type="button" i], [type="image" i]),
+  select,
+  textarea
+):not([id], [aria-label], [aria-labelledby], [title]):not(label *) {
+  @include inaccessible;
+}

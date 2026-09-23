@@ -1,0 +1,15 @@
+@use "highlight" as *;
+
+// WCAG 2.4.4 Link Purpose, 4.1.2 Name, Role, Value
+a[href]:empty:not([aria-label], [aria-labelledby], [title]) {
+  @include inaccessible($message: "Link has no text");
+}
+
+button:empty:not([aria-label], [aria-labelledby], [title]) {
+  @include inaccessible($message: "Button has no text");
+}
+
+// WCAG 2.4.6 Headings and Labels
+:is(h1, h2, h3, h4, h5, h6):empty {
+  @include inaccessible($message: "Empty heading");
+}

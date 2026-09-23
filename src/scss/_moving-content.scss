@@ -1,0 +1,7 @@
+@use "highlight" as *;
+
+// WCAG 2.2.2 Pause, Stop, Hide
+marquee,
+blink {
+  @include inaccessible;
+}

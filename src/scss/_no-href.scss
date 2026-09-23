@@ -1,3 +1,11 @@
+@use "highlight" as *;
+
+// Links without an href can't be focused. Often a sign a <button> was meant.
 a:not([href]) {
-  @include inaccessible
+  @include inaccessible(warning, "Link has no href");
+}
+
+a[href="#"],
+a[href^="javascript:" i] {
+  @include inaccessible(warning, "Link goes nowhere");
 }

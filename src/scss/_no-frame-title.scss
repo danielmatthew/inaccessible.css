@@ -1,4 +1,7 @@
-iframe:not([title]),
-frame:not([title]) {
-  @include inaccessible
+@use "highlight" as *;
+
+// WCAG 4.1.2 Name, Role, Value
+:is(iframe, frame):not([title], [aria-label], [aria-labelledby]),
+:is(iframe, frame)[title=""] {
+  @include inaccessible;
 }
