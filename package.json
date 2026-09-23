@@ -2,11 +2,21 @@
   "name": "inaccessible.css",
   "version": "1.4.1",
   "description": "A stylesheet to highlight inaccessible markup",
-  "main": "inaccessible.css",
+  "main": "dist/inaccessible.css",
+  "style": "dist/inaccessible.css",
+  "sass": "src/scss/inaccessible.scss",
+  "files": [
+    "dist/*.css",
+    "src/scss"
+  ],
   "scripts": {
-    "build": "npx sass src/scss/inaccessible.scss dist/css/inaccessible.css --style compressed",
-    "start": "npx sass src/scss/inaccessible.scss dist/css/inaccessible.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:css && npm run build:min",
+    "build:css": "sass src/scss/inaccessible.scss dist/inaccessible.css --no-source-map",
+    "build:min": "sass src/scss/inaccessible.scss dist/inaccessible.min.css --style compressed --no-source-map",
+    "start": "sass --watch src/scss/inaccessible.scss dist/inaccessible.css --no-source-map",
+    "test": "npm run build && playwright test",
+    "prepack": "npm run build",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -14,7 +24,11 @@
   },
   "keywords": [
     "accessibility",
+    "a11y",
+    "wcag",
     "css",
+    "scss",
+    "debug",
     "utility"
   ],
   "author": "github@danmatthew.co.uk",
@@ -24,14 +38,14 @@
   },
   "homepage": "https://github.com/danielmatthew/inaccessible.css#readme",
   "devDependencies": {
-    "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^10.0.0",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
-    "@semantic-release/github": "^7.0.7",
-    "husky": "^8.0.3",
-    "sass": "^1.26.10",
-    "semantic-release": "^21.0.1"
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@playwright/test": "~1.56.1",
+    "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/git": "^11.0.1",
+    "husky": "^9.1.7",
+    "sass": "^1.105.0",
+    "semantic-release": "^25.0.9"
   },
   "release": {
     "branches": "main",
