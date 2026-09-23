@@ -1,3 +1,4 @@
-video:not(video > track) {
+// A <track> with no kind defaults to subtitles.
+video:not(:has(> track:is([kind="captions" i], [kind="subtitles" i], :not([kind])))) {
   @include inaccessible;
 }
