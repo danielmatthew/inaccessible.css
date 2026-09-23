@@ -1,3 +1,8 @@
-label:not([for]) {
-  @include inaccessible
+@use "highlight" as *;
+
+// WCAG 1.3.1 Info and Relationships. A label must either point at a control
+// with `for` or wrap it.
+label:not([for]):not(:has(input, select, textarea, meter, output, progress, button)),
+label[for=""] {
+  @include inaccessible($message: "Label not linked to a control");
 }
