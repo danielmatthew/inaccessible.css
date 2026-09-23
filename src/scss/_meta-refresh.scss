@@ -1,0 +1,7 @@
+@use "highlight" as *;
+@use "head";
+
+// WCAG 2.2.1 Timing Adjustable. An instant (0 second) redirect is fine.
+meta[http-equiv="refresh" i]:not([content="0"], [content^="0;"], [content^="0,"]) {
+  @include inaccessible-meta;
+}

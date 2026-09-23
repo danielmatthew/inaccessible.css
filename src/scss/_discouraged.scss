@@ -1,0 +1,13 @@
+@use "highlight" as *;
+
+// Not failures by themselves, but worth a second look.
+
+// Access keys clash with assistive technology shortcuts.
+[accesskey],
+// Autofocus can disorient screen reader and magnifier users.
+[autofocus],
+// Inline click handlers on elements that can't be focused or activated
+// from the keyboard (WCAG 2.1.1 Keyboard).
+[onclick]:not(a[href], button, input, select, textarea, summary, label, [role], [tabindex]) {
+  @include inaccessible(warning);
+}

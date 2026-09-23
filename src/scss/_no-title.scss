@@ -1,0 +1,7 @@
+@use "highlight" as *;
+
+// WCAG 2.4.2 Page Titled
+html:not(:has(> head > title)),
+html:has(> head > title:empty) {
+  @include inaccessible-document;
+}
