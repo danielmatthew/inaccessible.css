@@ -1,0 +1,3 @@
+video:not(video > track) {
+  @include inaccessible;
+}
