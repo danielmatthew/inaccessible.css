@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-expect="none">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" data-expect="none">
+  <title>inaccessible.css demo</title>
+  <link rel="stylesheet" href="../dist/inaccessible.css">
+  <style>
+    /* A typical reset. inaccessible.css must still show through it. */
+    *, *:focus { outline: none; }
+
+    body { font-family: system-ui, sans-serif; max-width: 60rem; margin: 0 auto; padding: 1rem; line-height: 1.5; }
+    .case { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-block: 0.5rem; }
+    code { background: #eee; padding: 0 0.2em; }
+    .key { display: flex; gap: 1rem; }
+    .key span { padding: 0 0.4em; }
+    .key .error { outline: 3px solid #d00000; }
+    .key .warning { outline: 3px solid #e67e00; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>inaccessible.css</h1>
+  <p>Each example below is tagged with the result it should produce. The test suite checks every tag.</p>
+  <p class="key"><span class="error" data-expect="error">Error</span> <span class="warning" data-expect="warning">Warning</span></p>
+
+  <p>Document-level checks have their own pages: <a href="no-lang.html">no <code>lang</code></a>, <a href="no-title.html">no <code>&lt;title&gt;</code></a>, <a href="no-zoom.html">zoom disabled</a> and <a href="meta-refresh.html">timed refresh</a>.</p>
+
+  <section>
+    <h2>Images</h2>
+    <div class="case">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40'/%3E" width="80" height="40" data-expect="error">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40'/%3E" width="80" height="40" alt="" data-expect="none">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40'/%3E" width="80" height="40" alt="A grey box" data-expect="none">
+      <input type="image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'/%3E" width="40" height="40" data-expect="error">
+      <svg role="img" width="40" height="40" data-expect="error"><rect width="40" height="40" fill="#ccc"/></svg>
+      <svg role="img" width="40" height="40" data-expect="none"><title>Grey square</title><rect width="40" height="40" fill="#ccc"/></svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Frames</h2>
+    <div class="case">
+      <iframe srcdoc="No title" width="150" height="60" data-expect="error"></iframe>
+      <iframe srcdoc="Empty title" title="" width="150" height="60" data-expect="error"></iframe>
+      <iframe srcdoc="Titled" title="Example frame" width="150" height="60" data-expect="none"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>Video and audio</h2>
+    <div class="case">
+      <video width="160" height="90" controls data-expect="error"></video>
+      <video width="160" height="90" controls data-expect="none"><track kind="captions" src="captions.vtt" srclang="en"></video>
+      <video width="160" height="90" controls data-expect="none"><track src="captions.vtt" srclang="en"></video>
+      <video width="160" height="90" controls data-expect="error"><track kind="chapters" src="chapters.vtt" srclang="en"></video>
+      <video width="160" height="90" controls autoplay="false" data-expect="error"><track kind="captions" src="captions.vtt" srclang="en"></video>
+      <video width="160" height="90" controls autoplay muted data-expect="none"><track kind="captions" src="captions.vtt" srclang="en"></video>
+      <video width="160" height="90" autoplay muted data-expect="warning"><track kind="captions" src="captions.vtt" srclang="en"></video>
+      <audio controls autoplay data-expect="error"></audio>
+    </div>
+  </section>
+
+  <section>
+    <h2>Moving content</h2>
+    <marquee data-expect="error">Scrolling text that can't be paused</marquee>
+  </section>
+
+  <section>
+    <h2>Forms</h2>
+    <form action="#">
+      <div class="case">
+        <label data-expect="error" data-message="Label not linked to a control">Unlinked label</label>
+        <input id="unlinked" type="text" data-expect="none">
+      </div>
+      <div class="case">
+        <label for="" data-expect="error">Empty for</label>
+      </div>
+      <div class="case">
+        <label for="linked" data-expect="none">Linked label</label>
+        <input id="linked" type="text" data-expect="none">
+      </div>
+      <div class="case">
+        <label data-expect="none">Wrapping label <input type="text" data-expect="none"></label>
+        <label data-expect="none"><input type="checkbox" data-expect="none"> Wrapped checkbox</label>
+      </div>
+      <div class="case">
+        <input type="text" data-expect="error">
+        <input type="text" placeholder="Placeholder isn't a label" data-expect="error">
+        <input type="search" aria-label="Search" data-expect="none">
+        <select data-expect="error"><option>No label</option></select>
+        <textarea aria-labelledby="unlinked" data-expect="none"></textarea>
+        <input type="hidden" data-expect="none">
+        <input type="submit" value="Submit" data-expect="none">
+      </div>
+      <fieldset data-expect="warning" data-message="Fieldset has no legend">
+        <label><input type="radio" name="a"> A</label>
+      </fieldset>
+      <fieldset data-expect="none">
+        <legend>Choose</legend>
+        <label><input type="radio" name="b"> B</label>
+      </fieldset>
+    </form>
+  </section>
+
+  <section>
+    <h2>Links and buttons</h2>
+    <div class="case">
+      <a data-expect="warning" data-message="Link has no href">No href</a>
+      <a href="#" data-expect="warning" data-message="Link goes nowhere">Hash</a>
+      <a href="javascript:void(0)" data-expect="warning">JavaScript</a>
+      <a href="#top" data-expect="none">Real link</a>
+      <a href="#top" data-expect="error" data-message="Link has no text"></a>
+      <a href="#top" aria-label="Home" data-expect="none"></a>
+      <button type="button" data-expect="error" data-message="Button has no text"></button>
+      <button type="button" data-expect="none">Real button</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Headings</h2>
+    <h3 data-expect="error" data-message="Empty heading"></h3>
+  </section>
+
+  <section>
+    <h2>Tables</h2>
+    <div class="case">
+      <table data-expect="warning">
+        <tr><td>No</td><td>headers</td></tr>
+      </table>
+      <table data-expect="none">
+        <thead><tr><th scope="col">Column one</th><th scope="col">Column two</th></tr></thead>
+        <tbody><tr><td>A</td><td>B</td></tr></tbody>
+      </table>
+      <table role="presentation" data-expect="none">
+        <tr><td>Layout</td><td>table</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lists</h2>
+    <ul data-expect="none">
+      <li data-expect="none">List item</li>
+      <div data-expect="warning">Not a list item</div>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Focus and ARIA</h2>
+    <div class="case">
+      <div tabindex="1" data-expect="error">tabindex="1"</div>
+      <div tabindex="0" data-expect="none">tabindex="0"</div>
+      <div tabindex="-1" data-expect="none">tabindex="-1"</div>
+    </div>
+    <div class="case">
+      <div aria-hidden="true" data-expect="error"><a href="#top">Focusable but hidden</a></div>
+      <button type="button" aria-hidden="true" data-expect="error">Hidden button</button>
+      <div aria-hidden="true" data-expect="none"><a href="#top" tabindex="-1">Removed from tab order</a></div>
+      <div aria-hidden="true" data-expect="none"><button type="button" disabled>Disabled</button></div>
+      <div aria-hidden="true" inert data-expect="none"><a href="#top">Inert</a></div>
+      <div aria-hidden="true" data-expect="none">Decoration</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Worth a second look</h2>
+    <div class="case">
+      <button type="button" accesskey="s" data-expect="warning">Access key</button>
+      <input id="autofocus" aria-label="Autofocus" autofocus data-expect="warning">
+      <div onclick="void 0" data-expect="warning">Clickable div</div>
+      <div onclick="void 0" role="button" tabindex="0" data-expect="none">Div with role</div>
+      <button type="button" onclick="void 0" data-expect="none">Clickable button</button>
+    </div>
+  </section>
+</main>
+</body>
+</html>
